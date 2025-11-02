@@ -1,0 +1,63 @@
+```csharp
+using System;
+
+namespace PackageExpressApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Welcome message
+            Console.WriteLine("Welcome to Package Express! Follow the instructions to get your shipping quote.");
+
+            // Prompt user for package weight
+            Console.Write("Enter package weight: ");
+            decimal weight;
+            while (!decimal.TryParse(Console.ReadLine(), out weight) || weight <= 0)
+            {
+                Console.Write("Invalid input. Please enter a positive number for weight: ");
+            }
+
+            // Check weight limit
+            if (weight > 50)
+            {
+                Console.WriteLine("Package too heavy to be shipped via Package Express. Have a good day.");
+                return; // Exit program
+            }
+
+            // Prompt user for dimensions
+            decimal width = GetDimension("width");
+            decimal height = GetDimension("height");
+            decimal length = GetDimension("length");
+
+            // Check dimension total limit
+if ((width + height + length) > 50)
+            {
+                Console.WriteLine("Package too big to be shipped via Package Express.");
+                return; // Exit program
+            }
+
+            // Calculate shipping quote
+            decimal quote = (width * height * length * weight) / 100;
+
+            // Display the quote
+            Console.WriteLine("Your estimated total for shipping this package is:{quote:0.00}");
+            Console.WriteLine("Thank you for using Package Express!");
+        }
+
+        // Function to get dimension input from user with validation
+        static decimal GetDimension(string dimensionName)
+        {
+            Console.Write("Enter package dimensionName: ");
+            decimal dimension;
+            while (!decimal.TryParse(Console.ReadLine(), out dimension) || dimension <= 0)
+            
+                Console.Write("Invalid input. Please enter a positive number for {dimensionName}: ");
+            }
+            return dimension;
+        }
+    }
+}
+```
+
+Nasser
